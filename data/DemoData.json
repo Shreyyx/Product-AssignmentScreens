@@ -1,0 +1,19 @@
+[
+  {"_dataType": "demo" },
+  {
+    "_entity": "tutorial.MoquiTraining",
+    "trainingId": "TRAIN003",
+    "trainingName": "Python Class",
+    "trainingDate": "2024-02-11",
+    "trainingPrice": 299.99,
+    "trainingDuration": 3
+  },
+  {
+    "_entity": "tutorial.MoquiTraining",
+    "trainingId": "TRAIN004",
+    "trainingName": "Python Class",
+    "trainingDate": "2024-03-21",
+    "trainingPrice": 699.99,
+    "trainingDuration": 2
+  }
+]
