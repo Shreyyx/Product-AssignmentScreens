@@ -55,7 +55,6 @@
                     training.setFields(context, true, null, null)
                     training.setSequencedIdPrimary()
                     training.create()
-                    // Set the trainingId in the context
                     context.trainingId = training.trainingId
                 </script>
             </actions>
@@ -63,4 +62,45 @@
         </actions>
     </service>
 
+    <service verb="find" noun="MoquiTraining">
+        <in-parameters>
+<!--            <parameter name="trainingName"/>-->
+            <parameter name="trainingId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingInfo" type="list"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="tutorial.MoquiTraining" list="trainingInfo">
+                <econdition field-name="trainingId"/>
+                <select-field field-name="trainingName,trainingId,trainingDate"/>
+            </entity-find>
+        </actions>
+    </service>
+
+    <service verb="store" noun="MoquiTrainingStore">
+        <in-parameters>
+            <auto-parameters entity-name="MoquiTraining" include="nonpk"/>
+            <parameter name="trainingName" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingId"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="MoquiTraining" list="trainingInfo">
+                <econdition field-name="trainingName" ignore-case="true"/>
+            </entity-find>
+            <if condition="trainingInfo">
+                <then>
+                    <set field="training" from="trainingInfo.first"></set>
+                    <entity-set value-field="training" map="context"></entity-set>
+                    <entity-update value-field="training"/>
+                    <set field="trainingId" from="training.trainingId"></set>
+                </then>
+                <else>
+                    <service-call name="create#MoquiTraining" in-map="context" out-map="context"/>
+                </else>
+            </if>
+        </actions>
+    </service>
 </services>
