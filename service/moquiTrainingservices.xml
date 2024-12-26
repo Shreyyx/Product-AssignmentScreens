@@ -3,40 +3,33 @@
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
     <service verb="create" noun="MoquiTraining" type="entity-auto">
-
         <in-parameters>
-            <auto-parameters entity-name="tutorial.MoquiTraining" include="nonpk"/>
+            <auto-parameters entity-name="MoquiTraining" include="nonpk"/>
             <parameter name="trainingName" required="true"/>
             <parameter name="trainingDate" required="true"/>
-            <parameter name="trainingPrice"/>
-            <parameter name="trainingDuration"/>
         </in-parameters>
-
-        <out-parameters>
-            <parameter name="trainingId"/>
-        </out-parameters>
-
+        <out-parameters><parameter name="trainingId"/></out-parameters>
         <actions>
-            <service-call name="create#tutorial.MoquiTraining" in-map="context + [trainingName:trainingName, trainingDate:trainingDate, trainingPrice:trainingPrice, trainingDuration:trainingDuration]" out-map="context"/>
-
-            <if condition="trainingName">
-                <service-call name="create#tutorial.MoquiTrainingAdditionalService" in-map="[trainingId:trainingId]"/>
+            <if condition="!(context.trainingDate ==~ '\\d{2}/\\d{2}/\\d{4}')">
+                <error message="The trainingDate must follow MM/dd/yyyy format"/>
             </if>
         </actions>
     </service>
-
-    <service verb="create" noun="MoquiDefault">
+    <!-- inline service -->
+    <service verb="create" noun="MoquiTrainingDefaultInline">
         <in-parameters>
-            <parameter name="trainingId" />
-            <parameter name="trainingName"/>
-            <parameter name="trainingDate"/>
+            <parameter name="trainingName" required="true"/>
+            <!--            <parameter name="trainingDate" required="true" type="Date"/>-->
+            <parameter name="trainingDate" required="true">
+                <time-range after="now" format="mm/dd/yyyy"/></parameter>
             <parameter name="trainingPrice"/>
             <parameter name="trainingDuration"/>
         </in-parameters>
+        <out-parameters>
+            <parameter name="trainingId"/>
+        </out-parameters>
         <actions>
-            <service-call name="create#tutorial.MoquiTraining"
-                          in-map="context + [trainingName:trainingName, trainingDate:trainingDate, trainingPrice:trainingPrice, trainingDuration:trainingDuration]"
-                          out-map="context"/>
+            <service-call name="create#MoquiTraining" in-map="context" out-map="context"/>
         </actions>
     </service>
 
