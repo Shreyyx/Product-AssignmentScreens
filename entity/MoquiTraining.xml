@@ -8,10 +8,9 @@
         <field name="lastName" type="text-medium" />
     </entity>
 
-    <!-- Contact_Mech Entity -->
     <entity entity-name="ContactMech" package="tutorial">
         <field name="contactMechId" type="id" is-pk="true" />
-        <field name="partyId" type="id" />
+        <field name="partyId" type="id"/>
         <field name="streetAddress" type="text-medium" not-null="true" />
         <field name="city" type="text-medium" />
         <field name="state" type="text-medium" />

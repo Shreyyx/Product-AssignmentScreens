@@ -42,7 +42,6 @@
             <parameter name="trainingId"/>
         </out-parameters>
         <actions>
-            <actions>
                 <script>
                     def training = ec.entity.makeValue("MoquiTraining")
                     training.setFields(context, true, null, null)
@@ -50,8 +49,6 @@
                     training.create()
                     context.trainingId = training.trainingId
                 </script>
-            </actions>
-
         </actions>
     </service>
 
