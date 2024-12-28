@@ -62,7 +62,7 @@
         <relationship type="one" title="OrderItem" related="OrderHeader">
             <key-map field-name="orderId"/>
         </relationship>
-        <relationship type="one"  related="Product">
+        <relationship type="one" related="Product">
             <key-map field-name="productId"/>
         </relationship>
     </entity>
