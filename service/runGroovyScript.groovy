@@ -1,8 +1,5 @@
-//def moquiTraining = ec.entity.makeValue("MoquiTraining")
-//moquiTraining.setFields(context, true, null, null)
-//if (!moquiTraining.trainingId) {
-//    moquiTraining.getSequencedIdPrimary()
-//}
-//moquiTraining.create()
-//return context
-//
+def training = ec.entity.makeValue("MoquiTraining")
+training.setFields(context, true, null, null)
+training.setSequencedIdPrimary()
+training.create()
+context.trainingId = training.trainingId

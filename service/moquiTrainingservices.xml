@@ -41,15 +41,15 @@
         <out-parameters>
             <parameter name="trainingId"/>
         </out-parameters>
-        <actions>
+            <actions>
                 <script>
-                    def training = ec.entity.makeValue("MoquiTraining")
-                    training.setFields(context, true, null, null)
-                    training.setSequencedIdPrimary()
-                    training.create()
-                    context.trainingId = training.trainingId
+                def training = ec.entity.makeValue("MoquiTraining")
+                training.setFields(context, true, null, null)
+                training.setSequencedIdPrimary()
+                training.create()
+                context.trainingId = training.trainingId
                 </script>
-        </actions>
+            </actions>
     </service>
 
     <service verb="find" noun="MoquiTraining">
@@ -82,10 +82,10 @@
             </entity-find>
             <if condition="trainingInfo">
                 <then>
-                    <set field="training" from="trainingInfo.first"></set>
-                    <entity-set value-field="training" map="context"></entity-set>
+                    <set field="training" from="trainingInfo.first"/>
+                    <entity-set value-field="training" map="context"/>
                     <entity-update value-field="training"/>
-                    <set field="trainingId" from="training.trainingId"></set>
+                    <set field="trainingId" from="training.trainingId"/>
                 </then>
                 <else>
                     <service-call name="create#MoquiTraining" in-map="context" out-map="context"/>
