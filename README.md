@@ -72,7 +72,7 @@ Screenshots after testing the given APIs
 
 15.Retrieve Order Details: GET /orders/{order_id}
 
-![WhatsApp Image 2024-12-27 at 6 33 46 PM](https://github.com/user-attachments/assets/93866b48-ff00-4e9c-883e-649519583877)
+![image](https://github.com/user-attachments/assets/099da9a0-d0f3-4d22-9e92-5d15102b011d)
 
 
 16.Update an Order: PUT /orders/{order_id}
