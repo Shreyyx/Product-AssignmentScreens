@@ -70,7 +70,8 @@
         </method>
         <id name="orderId">
             <method type="put">
-                <entity name="OrderHeader" operation="update"/>
+                <service name="partyservice.put#OrderHeader"/>
+<!--                <entity name="OrderHeader" operation="update"/>-->
             </method>
             <method type="delete"> <service name="partyservice.delete#Order" /></method>
         </id>
