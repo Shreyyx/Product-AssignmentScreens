@@ -168,6 +168,56 @@
         </out-parameters>
     </service>
 
+    <service verb="put" noun="OrderHeader">
+        <in-parameters>
+            <parameter name="orderId" required="true"/>
+            <parameter name="orderDate"/>
+            <parameter name="partyId"/>
+            <parameter name="shippingContactMechId"/>
+            <parameter name="billingContactMechId"/>
+            <parameter name="listOfItems"/> <!-- To pass the items with status and quantity -->
+        </in-parameters>
+        <out-parameters>
+            <parameter name="updateMessage"/>
+        </out-parameters>
+        <actions>
+            <!-- Find the OrderHeader by orderId -->
+            <entity-find entity-name="OrderHeader" list="orderHeaderInfo">
+                <econdition field-name="orderId" value="$orderId"/>
+            </entity-find>
 
+            <if condition="orderHeaderInfo">
+                <then>
+                    <!-- Update the OrderHeader fields -->
+                    <set field="orderHeader" from="orderHeaderInfo.first"/>
+                    <entity-set value-field="orderHeader" map="context"/>
+                    <entity-update value-field="orderHeader"/>
 
+                    <!-- Iterate over listOfItems and update each associated OrderItem -->
+                    <for-each collection="listOfItems" var="item">
+                        <entity-find entity-name="OrderItem" list="orderItemInfo">
+                            <econdition field-name="orderId" value="$orderId"/>
+                            <econdition field-name="orderItemSeqId" value="$item.orderItemSeqId"/>
+                        </entity-find>
+                        <if condition="orderItemInfo">
+                            <then>
+                                <set field="orderItem" from="orderItemInfo.first"/>
+                                <set field="orderItem.status" value="$item.status"/>
+                                <set field="orderItem.quantity" value="$item.quantity"/>
+                                <entity-set value-field="orderItem" map="context"/>
+                                <entity-update value-field="orderItem"/>
+                            </then>
+                        </if>
+                    </for-each>
+
+                    <!-- Set success message -->
+                    <set field="updateMessage" value="Order and associated items updated successfully"/>
+                </then>
+                <else>
+                    <!-- Set failure message if OrderHeader is not found -->
+                    <set field="updateMessage" value="Order not found"/>
+                </else>
+            </if>
+        </actions>
+    </service>
 </services>

@@ -69,7 +69,9 @@
 <!--            <entity name="OrderHeader" operation="create" />-->
         </method>
         <id name="orderId">
-            <method type="put"><entity name="OrderHeader" operation="update"/></method>
+            <method type="put">
+                <entity name="OrderHeader" operation="update"/>
+            </method>
             <method type="delete"> <service name="partyservice.delete#Order" /></method>
         </id>
         <resource name="items">
