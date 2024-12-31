@@ -75,9 +75,8 @@ Screenshots after testing the given APIs
 ![image](https://github.com/user-attachments/assets/099da9a0-d0f3-4d22-9e92-5d15102b011d)
 
 
-16.Update an Order: PUT /orders/{order_id}
-
-![WhatsApp Image 2024-12-27 at 4 03 22 PM](https://github.com/user-attachments/assets/a40a42a7-960e-4f05-b1b9-f583fc88ffbb)
+16.Update an Order with item: PUT /orders/{order_id}
+![image](https://github.com/user-attachments/assets/eb1f1de7-e457-45dc-9d5d-c1d14aec3775)
 
 
 17.Delete an Order with item: DELETE /orders/{order_id}
