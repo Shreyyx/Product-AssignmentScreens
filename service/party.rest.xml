@@ -6,6 +6,7 @@
     <resource name="Party" require-authentication="anonymous-all">
 
         <method type="get">
+<!--            <service name="partyservice.get#Party"/>-->
             <entity name="Party" operation="list" />
         </method>
         <method type="post">
@@ -14,7 +15,8 @@
 
         <id name="partyId">
             <method type="put">
-                <entity name="Party" operation="update"/>
+                <service name="partyservice.put#Party"/>
+<!--                <entity name="Party" operation="update"/>-->
             </method>
             <method type="delete">
                 <entity name="Party" operation="delete"/>
