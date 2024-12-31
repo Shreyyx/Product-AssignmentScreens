@@ -12,7 +12,7 @@ Screenshots after testing the given APIs
 
 3.Update a Party: PUT /parties/{party_id}
 
-![WhatsApp Image 2024-12-27 at 11 08 09 AM](https://github.com/user-attachments/assets/89b2b79c-5b15-45c1-b432-88a7a5c036c2)
+![image](https://github.com/user-attachments/assets/06b26587-8764-4673-92be-5fd46eb72d1e)
 
 
 4.Delete a Party: DELETE /parties/{party_id}
