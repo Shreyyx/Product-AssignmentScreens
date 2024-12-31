@@ -22,11 +22,7 @@
         </in-parameters>
         <out-parameters>
             <auto-parameters include="pk"/>
-<!--            <parameter name="successMessage" />-->
         </out-parameters>
-<!--        <actions>-->
-<!--            <set-field name="successMessage" value="Party created successfully"/>-->
-<!--        </actions>-->
     </service>
 
     <service verb="put" noun="Party">
@@ -119,16 +115,14 @@
         </in-parameters>
         <out-parameters>
             <parameter name="orderId" type="Id"/>
-            <parameter name="successMessage" />
         </out-parameters>
         <actions>
             <service-call name="create#OrderHeader" in-map="context" out-map="mp"/>
-<!--            do it to return OrderId in response body-->
-<!--            <set-field="OrderHeader.orderId" value="${"mp.orderId}"/>-->
             <iterate list="itemList" entry="item">
                 <set field="item.orderId" value="${mp.orderId}"/>
                 <service-call name="create#OrderItem" in-map="item"/>
             </iterate>
+
         </actions>
     </service>
 

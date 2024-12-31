@@ -32,7 +32,7 @@
         </actions>
     </service>
 
-    <service verb="create" noun="MoquiTrainingGroovy">
+    <service verb="create" noun="MoquiTrainingGroovy" type="script" location="component://moqui-training/service/runGroovyScript.groovy">
         <in-parameters>
             <auto-parameters entity-name="MoquiTraining" include="nonpk"/>
             <parameter name="trainingName" required="true"/>
@@ -40,15 +40,6 @@
         <out-parameters>
             <parameter name="trainingId"/>
         </out-parameters>
-            <actions>
-                <script>
-                def groovy_training = ec.entity.makeValue("MoquiTraining")
-                groovy_training.setFields(context, true, null, null)
-                groovy_training.setSequencedIdPrimary()
-                groovy_training.create()
-                context.trainingId = groovy_training.trainingId
-                </script>
-            </actions>
     </service>
 
     <service verb="find" noun="MoquiTraining">
@@ -91,4 +82,21 @@
             </if>
         </actions>
     </service>
+
+    <service verb="perform" noun="Addition"  >
+        <in-parameters>
+            <parameter name="number1" type="BigDecimal" required="true"/>
+            <parameter name="number2" type="BigDecimal" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="result" type="BigDecimal"/>
+        </out-parameters>
+        <actions>
+            <script>
+                result = number1 + number2
+            </script>
+            <set field="result"  from="result" value="result"/>
+        </actions>
+    </service>
+
 </services>
