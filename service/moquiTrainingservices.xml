@@ -15,11 +15,10 @@
             </if>
         </actions>
     </service>
-    <!-- inline service -->
-    <service verb="create" noun="MoquiTrainingDefaultInline">
+
+    <service verb="create" noun="MoquiTrainingDefault">
         <in-parameters>
             <parameter name="trainingName" required="true"/>
-            <!--            <parameter name="trainingDate" required="true" type="Date"/>-->
             <parameter name="trainingDate" required="true">
                 <time-range after="now" format="mm/dd/yyyy"/></parameter>
             <parameter name="trainingPrice"/>
@@ -43,18 +42,17 @@
         </out-parameters>
             <actions>
                 <script>
-                def training = ec.entity.makeValue("MoquiTraining")
-                training.setFields(context, true, null, null)
-                training.setSequencedIdPrimary()
-                training.create()
-                context.trainingId = training.trainingId
+                def groovy_training = ec.entity.makeValue("MoquiTraining")
+                groovy_training.setFields(context, true, null, null)
+                groovy_training.setSequencedIdPrimary()
+                groovy_training.create()
+                context.trainingId = groovy_training.trainingId
                 </script>
             </actions>
     </service>
 
     <service verb="find" noun="MoquiTraining">
         <in-parameters>
-<!--            <parameter name="trainingName"/>-->
             <parameter name="trainingId"/>
         </in-parameters>
         <out-parameters>
@@ -68,17 +66,17 @@
         </actions>
     </service>
 
-    <service verb="store" noun="MoquiTrainingStore">
+    <service verb="new" noun="MoquiTraining">
         <in-parameters>
+            <parameter name="trainingId" required="true"/>
             <auto-parameters entity-name="MoquiTraining" include="nonpk"/>
-            <parameter name="trainingName" required="true"/>
         </in-parameters>
         <out-parameters>
             <parameter name="trainingId"/>
         </out-parameters>
         <actions>
             <entity-find entity-name="MoquiTraining" list="trainingInfo">
-                <econdition field-name="trainingName" ignore-case="true"/>
+                <econdition field-name="trainingId" ignore-case="true"/>
             </entity-find>
             <if condition="trainingInfo">
                 <then>

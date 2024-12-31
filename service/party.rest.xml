@@ -5,12 +5,11 @@
 
     <resource name="Party" require-authentication="anonymous-all">
 
-        <!-- Retrieve Party List (GET) -->
         <method type="get">
             <entity name="Party" operation="list" />
         </method>
         <method type="post">
-            <service name="partyservice.create#Party" />
+            <service name="partyservice.create#Party"/>
         </method>
 
         <id name="partyId">
