@@ -12,7 +12,7 @@ Screenshots after testing the given APIs
 
 3.Update a Party: PUT /parties/{party_id}
 
-![image](https://github.com/user-attachments/assets/06b26587-8764-4673-92be-5fd46eb72d1e)
+![image](https://github.com/user-attachments/assets/ebb2b38b-d579-466c-ad34-6f73ed6a520d)
 
 
 4.Delete a Party: DELETE /parties/{party_id}
