@@ -89,6 +89,12 @@ Screenshots after testing the given APIs
 ![WhatsApp Image 2024-12-27 at 4 57 29 PM](https://github.com/user-attachments/assets/d509aa98-736e-4feb-94c9-7d2d9c90f9cf)
 
 
+19.Delete an Order Item
+
+![image](https://github.com/user-attachments/assets/b2ffda43-dbd2-444c-a7bc-db6f2c4a41ff)
+
+
+
 
 
 
