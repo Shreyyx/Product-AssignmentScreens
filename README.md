@@ -42,7 +42,7 @@ Screenshots after testing the given APIs
 
 9.Create a Product: POST /products
 
-![WhatsApp Image 2024-12-27 at 3 48 00 PM](https://github.com/user-attachments/assets/a9823770-ea8d-410e-8e4e-9f4617709ef6)
+![image](https://github.com/user-attachments/assets/cdcd6f18-e80e-4866-8eb3-426e68d6d69f)
 
 
 10.Retrieve all Product Details: GET /products/{product_id}
@@ -53,6 +53,11 @@ Screenshots after testing the given APIs
 11.Get a product:
 
 ![image](https://github.com/user-attachments/assets/c12548e7-f1f4-443d-b47d-b3db399eae47)
+
+
+When no such Product Exists:
+
+![image](https://github.com/user-attachments/assets/b5b216e5-5789-47e1-aa53-bc6856fe1601)
 
 
 12.Update a Product: PUT /products/{product_id}
