@@ -2,17 +2,17 @@
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
-    <service verb="get" noun="Party">
-        <in-parameters>
-            <parameter name="partyId" required="true"/>
-        </in-parameters>
+    <service verb="find" noun="Party">
         <out-parameters>
             <parameter name="party"/>
         </out-parameters>
         <actions>
-            <entity-find-one entity-name="tutorial.Party" value-field="party">
-                <field-map field-name="partyId" value="$partyId"/>
-            </entity-find-one>
+            <entity-find entity-name="Party"/>
+            <if condition="!Party">
+                <then>
+                    <return message="No Such Party Exists"/>
+                </then>
+            </if>
         </actions>
     </service>
 
@@ -53,138 +53,4 @@
         </actions>
     </service>
 
-    <service verb="find" noun="Party">
-        <in-parameters>
-            <parameter name="orderId" required="true" />
-        </in-parameters>
-        <out-parameters>
-            <parameter name="orderInfo"/>
-            <parameter name="itemInfo" type="list" />
-        </out-parameters>
-        <actions>
-            <entity-find-one entity-name="OrderHeader" value-field="orderInfo"/>
-            <entity-find entity-name="OrderItem" list="itemInfo">
-                <econdition field-name="orderId"/>
-            </entity-find>
-        </actions>
-    </service>
-
-    <service verb="getsingle" noun="Party">
-        <in-parameters>
-            <parameter name="productId" required="true" />
-        </in-parameters>
-        <out-parameters>
-            <parameter name="productInfo"/>
-            <parameter name="itemInfo" type="list" />
-        </out-parameters>
-        <actions>
-            <entity-find-one entity-name="Product" value-field="productInfo"/>
-        </actions>
-    </service>
-
-    <service verb="delete" noun="Order">
-        <in-parameters>
-            <parameter name="orderId" required="true"/>
-        </in-parameters>
-        <actions>
-            <entity-find-one entity-name="OrderHeader" value-field="orderInfo">
-                <field-map field-name="orderId" value="$orderId"/>
-            </entity-find-one>
-            <entity-delete-by-condition entity-name="OrderItem">
-                <econdition field-name="orderId" value="$orderId"/>
-            </entity-delete-by-condition>
-            <entity-delete-by-condition entity-name="OrderHeader">
-                <econdition field-name="orderId" value="$orderId"/>
-            </entity-delete-by-condition>
-        </actions>
-    </service>
-
-    <service verb="create" noun="OrderHeader">
-        <in-parameters>
-            <parameter name="orderDate"/>
-            <parameter name="partyId"/>
-            <parameter name="shippingContactMechId"/>
-            <parameter name="billingContactMechId"/>
-            <parameter name="itemList" type="List">
-                <parameter name="orderItem" type="Map">
-                    <parameter name="productId"/>
-                    <parameter name="quantity"/>
-                    <parameter name="status"/>
-                </parameter>
-            </parameter>
-        </in-parameters>
-        <out-parameters>
-            <parameter name="orderId" type="Id"/>
-        </out-parameters>
-        <actions>
-            <service-call name="create#OrderHeader" in-map="context" out-map="mp"/>
-            <iterate list="itemList" entry="item">
-                <set field="item.orderId" value="${mp.orderId}"/>
-                <service-call name="create#OrderItem" in-map="item"/>
-            </iterate>
-
-        </actions>
-    </service>
-
-    <service verb="create" noun="OrderItem" type="entity-auto">
-        <in-parameters>
-            <auto-parameters entity-name="OrderItem" include="nonpk"/>
-        </in-parameters>
-        <out-parameters>
-            <parameter name="orderItemSeqId" type="Id"/>
-        </out-parameters>
-    </service>
-
-    <service verb="create" noun="OrderHeader" type="entity-auto">
-        <in-parameters>
-            <auto-parameters entity-name="OrderItem" include="nonpk"/>
-        </in-parameters>
-        <out-parameters>
-            <parameter name="orderItemSeqId" type="Id"/>
-        </out-parameters>
-    </service>
-
-    <service verb="put" noun="OrderHeader">
-        <in-parameters>
-            <parameter name="orderId" required="true"/>
-            <parameter name="orderDate"/>
-            <parameter name="partyId"/>
-            <parameter name="shippingContactMechId"/>
-            <parameter name="billingContactMechId"/>
-            <parameter name="listOfItems" type="List">
-                <parameter name="orderItem" type="Map">
-                    <parameter name="orderItemSeqId" required="true"/>
-                    <parameter name="quantity" required="true"/>
-                    <parameter name="status" required="true"/>
-                </parameter>
-            </parameter>
-        </in-parameters>
-        <out-parameters>
-            <parameter name="orderHeaderInfo" />
-            <parameter name="updatedItems" type="List"/>
-        </out-parameters>
-        <actions>
-            <entity-find-one entity-name="OrderHeader" value-field="OrderHeaderInfo">
-                <field-map field-name="orderId" value="$orderId"/>
-            </entity-find-one>
-
-            <if condition="OrderHeaderInfo">
-                <then>
-                    <set field="OrderHeaderInfo.orderDate" value="$orderDate"/>
-                    <set field="OrderHeaderInfo.partyId" value="$partyId"/>
-                    <set field="OrderHeaderInfo.shippingContactMechId" value="$shippingContactMechId"/>
-                    <set field="OrderHeaderInfo.billingContactMechId" value="$billingContactMechId"/>
-                    <entity-update value-field="OrderHeaderInfo"/>
-                </then>
-            </if>
-            <iterate list="listOfItems" entry="item">
-                <entity-find-one entity-name="OrderItem" value-field="item1">
-                    <field-map field-name="orderItemSeqId" from="item.orderItemSeqId"/>
-                </entity-find-one>
-                <set field="item1.quantity" value="${item.quantity.toString()}"/>
-                <set field="item1.status" value="${item.status}"/>
-                <entity-update value-field="item1"/>
-            </iterate>
-        </actions>
-    </service>
 </services>

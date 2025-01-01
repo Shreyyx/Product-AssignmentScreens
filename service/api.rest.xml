@@ -23,15 +23,18 @@
             </method>
     <resource name="contactMech" >
         <method type="get">
-            <entity name="ContactMech" operation="one" />
+            <service name="ContactMechservice.find#Contact"/>
+<!--            <entity name="ContactMech" operation="one" />-->
         </method>
         <method type="post">
-            <entity name="ContactMech" operation="create" />
+            <service name="ContactMechservice.create#Contact"/>
+<!--            <entity name="ContactMech" operation="create" />-->
         </method>
 
         <id name="contactMechId">
             <method type="put">
-                <entity name="ContactMech" operation="update"/>
+<!--                <entity name="ContactMech" operation="update"/>-->
+                <service name="ContactMechservice.update#Contact"/>
             </method>
             <method type="delete">
                 <entity name="ContactMech" operation="delete"/>
@@ -43,17 +46,21 @@
 
     <resource name="Product" require-authentication="anonymous-all">
         <method type="get">
-            <entity name="Product" operation="list" />
+<!--            <entity name="Product" operation="list" />-->
+            <service name="ProductService.find#AllProducts"/>
         </method>
         <method type="post">
-            <entity name="Product" operation="create" />
+<!--            <entity name="Product" operation="create" />-->
+            <service name="ProductService.create#Product"/>
         </method>
         <id name="productId">
             <method type="get">
-            <entity name="Product" operation="one" />
+<!--            <entity name="Product" operation="one" />-->
+                <service name="ProductService.get#AProduct"/>
         </method>
             <method type="put">
-                <entity name="Product" operation="update"/>
+                <service name="ProductService.update#Product"/>
+<!--                <entity name="Product" operation="update"/>-->
             </method>
             <method type="delete">
                 <entity name="Product" operation="delete"/>
@@ -63,21 +70,28 @@
 
     <resource name="Order"  require-authentication="anonymous-all">
         <method type="get">
-            <service name="partyservice.find#Party" />
+            <service name="OrderHeaderService.find#Order" />
         </method>
         <method type="post">
-            <service name="partyservice.create#OrderHeader"/>
+            <service name="OrderHeaderService.create#OrderHeader"/>
 <!--            <entity name="OrderHeader" operation="create" />-->
         </method>
         <id name="orderId">
             <method type="put">
-                <service name="partyservice.put#OrderHeader"/>
+                <service name="OrderHeaderService.put#OrderHeader"/>
 <!--                <entity name="OrderHeader" operation="update"/>-->
             </method>
-            <method type="delete"> <service name="partyservice.delete#Order" /></method>
+            <method type="delete"> <service name="OrderHeaderService.delete#Order" /></method>
         </id>
+
         <resource name="items">
-            <method type="post"><entity name="OrderItem" operation="create"/></method>
+            <method type="post"><service name="OrderItemService.create#OrderItem" /></method>
+        </resource>
+
+        <resource name="item" require-authentication="anonymous-all">
+            <id name="orderItemSeqId">
+                <method type="delete"><service name="OrderItemService.delete#OrderItem" /></method>
+            </id>
         </resource>
     </resource>
 </resource>
