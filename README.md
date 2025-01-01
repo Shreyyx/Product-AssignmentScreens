@@ -93,6 +93,10 @@ When no such Product Exists:
 
 ![WhatsApp Image 2024-12-27 at 4 57 29 PM](https://github.com/user-attachments/assets/d509aa98-736e-4feb-94c9-7d2d9c90f9cf)
 
+When Quantity is Zero
+
+![image](https://github.com/user-attachments/assets/fdc58327-6b97-4d05-96f2-ac961017340c)
+
 
 19.Delete an Order Item
 
