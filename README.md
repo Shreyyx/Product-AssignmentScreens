@@ -18,8 +18,7 @@ Get a single party
 
 When no such party exists
 
-![image](https://github.com/user-attachments/assets/65c3fb4f-27f9-43d9-868c-19786f3a5dce)
-
+![image](https://github.com/user-attachments/assets/ead61df9-2a7b-4fdc-b448-5f8542983b5f)
 
 
 3.Update a Party: PUT /parties/{party_id}
