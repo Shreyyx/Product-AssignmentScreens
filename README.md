@@ -34,7 +34,15 @@ When no such party exists
 
 4.Delete a Party: DELETE /parties/{party_id}
 
-![WhatsApp Image 2024-12-27 at 11 09 49 AM](https://github.com/user-attachments/assets/9bd67795-c3f3-4076-9c93-ad85def37aee)
+![image](https://github.com/user-attachments/assets/e26573b8-b7dd-4b2a-a790-22a81d1aac30)
+
+Deleting a party when an order exists
+
+![image](https://github.com/user-attachments/assets/f7de8034-acd3-43bb-bba9-94f79be48d39)
+
+Deleting a party when it does not exists
+
+![image](https://github.com/user-attachments/assets/0482c712-993e-4e34-b3d0-6ecfb614e547)
 
 
 5.Add Contact Mechanism: POST /parties/{party_id}/contacts
