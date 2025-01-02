@@ -7,7 +7,19 @@ Screenshots after testing the given APIs
 
 2.Retrieve Party Details: GET /parties/{party_id}
 
-![WhatsApp Image 2024-12-27 at 11 05 32 AM](https://github.com/user-attachments/assets/db87db26-bd57-4778-a3fb-7415ad042641)
+Get all party details
+
+![image](https://github.com/user-attachments/assets/25a809c9-c786-4e10-8382-ce9cb38ceb1f)
+
+Get a single party
+
+![image](https://github.com/user-attachments/assets/5ba9dfb5-6f59-4f8e-b8b6-88fe9563f630)
+
+
+When no such party exists
+
+![image](https://github.com/user-attachments/assets/65c3fb4f-27f9-43d9-868c-19786f3a5dce)
+
 
 
 3.Update a Party: PUT /parties/{party_id}
