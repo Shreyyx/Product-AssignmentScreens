@@ -49,7 +49,11 @@ When no such party exists
 
 7.Update Contact Mechanism: PUT /parties/{party_id}/contacts/{contact_mech_id}
 
-![WhatsApp Image 2024-12-27 at 3 41 46 PM](https://github.com/user-attachments/assets/ca280129-2986-4c0c-8ce2-d27c921cf4af)
+![image](https://github.com/user-attachments/assets/8addbe5f-9528-4a6a-87da-03c226e87bb1)
+
+When for the given party contactmech is not created 
+
+![image](https://github.com/user-attachments/assets/1ea65c2a-ec7c-4467-b4d6-bab6f03dec68)
 
 
 8.Delete Contact Mechanism: DELETE /parties/{party_id}/contacts/{contact_mech_id}
@@ -79,7 +83,7 @@ When no such Product Exists:
 
 12.Update a Product: PUT /products/{product_id}
 
-![WhatsApp Image 2024-12-27 at 3 51 43 PM](https://github.com/user-attachments/assets/7bac9ee7-d7ca-4b48-9e8c-e9fe7e8d06f8)
+![image](https://github.com/user-attachments/assets/df8c45dc-71df-4ee7-8ee2-208812317b25)
 
 
 13.Delete a Product: DELETE /products/{product_id}
