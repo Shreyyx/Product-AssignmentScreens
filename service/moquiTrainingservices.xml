@@ -7,14 +7,11 @@
             <auto-parameters entity-name="MoquiTraining" include="nonpk"/>
             <parameter name="trainingName" required="true"/>
             <parameter name="trainingDate" required="true"/>
-
         </in-parameters>
-        <out-parameters><parameter name="trainingId"/></out-parameters>
-<!--        <actions>-->
-<!--            <if condition="!(context.trainingDate ==~ '\\d{2}/\\d{2}/\\d{4}')">-->
-<!--                <error message="The trainingDate must follow MM/dd/yyyy format"/>-->
-<!--            </if>-->
-<!--        </actions>-->
+        <out-parameters>
+            <parameter name="trainingId"/>
+        </out-parameters>
+
     </service>
 
     <service verb="create" noun="MoquiTrainingDefault">

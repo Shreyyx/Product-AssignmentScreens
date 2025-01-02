@@ -4,13 +4,30 @@
 
     <service verb="find" noun="Party">
         <out-parameters>
-            <parameter name="party"/>
+            <parameter name="party" type="list"/>
         </out-parameters>
         <actions>
-            <entity-find entity-name="Party"/>
-            <if condition="!Party">
+            <entity-find entity-name="Party" list="party"/>
+            <if condition="!party">
                 <then>
-                    <return message="No Such Party Exists"/>
+                    <return message="No such party Exists"/>
+                </then>
+            </if>
+        </actions>
+    </service>
+
+    <service verb="find" noun="AParty">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="party" type="list"/>
+        </out-parameters>
+        <actions>
+            <entity-find-one entity-name="Party" value-field="party"/>
+            <if condition="!party">
+                <then>
+                    <return message="No such Party Exists"/>
                 </then>
             </if>
         </actions>
@@ -43,12 +60,12 @@
 
             <if condition="party">
                 <then>
-                    <set field="party.partyType" value="$partyType"/>
-                    <set field="party.firstName" value="$firstName"/>
-                    <set field="party.lastName" value="$lastName"/>
+                    <set field="party.partyType" from="partyType"/>
+                    <set field="party.firstName" from="firstName"/>
+                    <set field="party.lastName" from="lastName"/>
                     <entity-update value-field="party"/>
                 </then>
-                <set field="successMessage" from="'Party Updated Successfully'"/>
+                <set field="successMessage" value="Party Updated Successfully"/>
             </if>
         </actions>
     </service>

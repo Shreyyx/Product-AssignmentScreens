@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 
-    <service verb="create" noun="OrderItem">
+    <service verb="create" noun="OrderItems">
         <in-parameters>
             <auto-parameters entity-name="OrderItem" include="nonpk"/>
         </in-parameters>

@@ -6,14 +6,20 @@
     <resource name="Party" require-authentication="anonymous-all">
 
         <method type="get">
-<!--            <service name="partyservice.get#Party"/>-->
-            <entity name="Party" operation="list" />
+            <service name="partyservice.find#Party"/>
+<!--            <entity name="Party" operation="list" />-->
         </method>
+
         <method type="post">
             <service name="partyservice.create#Party"/>
         </method>
 
         <id name="partyId">
+
+            <method type="get">
+                <service name="partyservice.find#AParty"/>
+            </method>
+
             <method type="put">
                 <service name="partyservice.put#Party"/>
 <!--                <entity name="Party" operation="update"/>-->
@@ -85,7 +91,7 @@
         </id>
 
         <resource name="items">
-            <method type="post"><service name="OrderItemService.create#OrderItem" /></method>
+            <method type="post"><service name="OrderItemService.create#OrderItems" /></method>
         </resource>
 
         <resource name="item" require-authentication="anonymous-all">
