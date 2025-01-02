@@ -1,4 +1,10 @@
-Screenshots after testing the given APIs
+<h1>Moqui Training</h1>
+
+
+<h4>This file gives us an overview of how each API works and performs the related CRUD operations. Below are the screenshots attached for the same.</h4>
+
+
+Screenshots after testing the given APIs:
 
 1. Create a Party: POST /parties
    
