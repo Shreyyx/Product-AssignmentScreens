@@ -70,4 +70,37 @@
         </actions>
     </service>
 
+    <service verb="delete" noun="Party">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="message"/>
+        </out-parameters>
+        <actions>
+            <entity-find-one entity-name="Party" value-field="party"/>
+            <if condition="!party">
+                <return message="Party does not exists"/>
+            </if>
+            <entity-find-one entity-name="OrderHeader" value-field="order">
+                <field-map field-name="partyId" from="partyId"/>
+            </entity-find-one>
+            <if condition="order">
+                <return message="Cannot delete this party because it has orders"/>
+            </if>
+            <entity-find-one entity-name="ContactMech" value-field="contact">
+                <field-map field-name="partyId" from="partyId"/>
+            </entity-find-one>
+            <if condition="contact">
+                <then>
+                    <entity-delete-related value-field="party"  relationship-name="Party#tutorial.ContactMech"/>
+                </then>
+            </if>
+            <entity-delete-by-condition entity-name="Party" >
+                <econdition field-name="partyId"/>
+            </entity-delete-by-condition>
+            <set field="message" value="Party Deleted Successfully"/>
+        </actions>
+    </service>
+
 </services>

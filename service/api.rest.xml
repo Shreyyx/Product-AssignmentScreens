@@ -25,7 +25,8 @@
 <!--                <entity name="Party" operation="update"/>-->
             </method>
             <method type="delete">
-                <entity name="Party" operation="delete"/>
+                <service name="partyservice.delete#Party"/>
+<!--                <entity name="Party" operation="delete"/>-->
             </method>
     <resource name="contactMech" >
         <method type="get">
@@ -65,7 +66,7 @@
                 <service name="ProductService.get#AProduct"/>
         </method>
             <method type="put">
-                <service name="ProductService.update#Product"/>
+                <service name="ProductService.update#Products"/>
 <!--                <entity name="Product" operation="update"/>-->
             </method>
             <method type="delete">

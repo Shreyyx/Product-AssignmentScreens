@@ -51,13 +51,13 @@
         </actions>
     </service>
 
-    <service verb="update" noun="Product">
+    <service verb="update" noun="Products">
         <in-parameters>
             <auto-parameters entity-name="Product" />
         </in-parameters>
         <out-parameters>
             <parameter name="message"/>
-            <parameter name="product" type="List"/>
+            <parameter name="productInfo" type="List"/>
         </out-parameters>
         <actions>
             <entity-find-one entity-name="Product" value-field="product">
@@ -72,10 +72,10 @@
                     <set field="message"  value="Product Updated Successfully"/>
                 </then>
                 <else>
-                    <set field="message"  value="No such Product with the given Id exists"/>
+                    <set field="message"  value="Product Not Found"/>
                 </else>
             </if>
-            <set field="productDetails" from="product"/>
+            <set field="productInfo" from="product"/>
         </actions>
     </service>
 </services>
