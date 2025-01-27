@@ -1,0 +1,113 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd" require-authentication="anonymous-all">
+    <transition name="createPerson">
+        <service-call name="create#relationship.Person"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createParty">
+        <service-call name="create#relationship.Party"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createOrganization">
+        <service-call name="create#relationship.Org"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createOrganization">
+        <service-call name="create#relationship.Org"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createPartyType">
+        <service-call name="create#relationship.PartyType"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createPartyRole">
+        <service-call name="create#relationship.PartyRole"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createContactMech">
+        <service-call name="create#relationship.ContactMech"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createPartyContactMech">
+        <service-call name="create#relationship.PartyContactMech"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createTelecomNumber">
+        <service-call name="create#relationship.TelecomNumber"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createEmailAddress">
+        <service-call name="create#relationship.EmailAddress"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createPostalAddress">
+        <service-call name="create#relationship.PostalAddress"/>
+        <default-response url="."/>
+    </transition>
+    <widgets>
+        <label type="h1" text="User Form"/>
+        <container-dialog id="CreateTutorialDialog1" button-text="Create Party">
+            <form-single name="CreateParty" transition="createParty">
+                <auto-fields-entity entity-name="relationship.Party" field-type="edit" include="nonpk"/>
+                <field name="submitButton">
+                    <default-field title="Create">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog" button-text="Create Person">
+            <form-single name="CreatePerson" transition="createPerson">
+                <auto-fields-entity entity-name="relationship.Person" field-type="edit"/>
+                <field name="submitButton">
+                    <default-field title="Create">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog2" button-text="Create Organization">
+            <form-single name="CreateOrganization" transition="createOrganization">
+                <auto-fields-entity entity-name="relationship.Org" field-type="edit"/>
+                <field name="submitButton">
+                    <default-field title="Create">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog3" button-text="Create Party Role">
+            <form-single name="CreatePartyRole" transition="createPartyRole">
+                <auto-fields-entity entity-name="relationship.PartyRole" field-type="edit"/>
+                <field name="submitButton">
+                    <default-field title="Create">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog4" button-text="Create Contact Mech">
+            <form-single name="CreateContactMech" transition="createContactMech">
+                <auto-fields-entity entity-name="relationship.ContactMech" field-type="edit"/>
+                <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog5" button-text="Create Telecom Number">
+            <form-single name="CreateTelecomNumber" transition="createTelecomNumber">
+                <auto-fields-entity entity-name="relationship.TelecomNumber" field-type="edit"/>
+                <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog6" button-text="Create Email Address">
+            <form-single name="CreateEmailAddress" transition="createEmailAddress">
+                <auto-fields-entity entity-name="relationship.EmailAddress" field-type="edit"/>
+                <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+            </form-single>
+        </container-dialog>
+        <container-dialog id="CreateTutorialDialog7" button-text="Create Postal Address">
+            <form-single name="CreatePostalAddress" transition="createPostalAddress">
+                <auto-fields-entity entity-name="relationship.PostalAddress" field-type="edit"/>
+                <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+            </form-single>
+        </container-dialog>
+    </widgets>
+</screen>
