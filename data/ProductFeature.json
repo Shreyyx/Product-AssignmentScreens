@@ -1,0 +1,21 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "assign.ProductFeature",
+    "productFeatureId": "128BG",
+    "productFeatureTypeEnumId": "PftSoftware",
+    "description": "This feature is a software specification of 128BG"
+  },
+  {
+    "_entity": "assign.ProductFeature",
+    "productFeatureId": "256BG",
+    "productFeatureTypeEnumId": "PftSoftware",
+    "description": "This feature is a software specification of 256BG"
+  },
+  {
+    "_entity": "assign.ProductFeature",
+    "productFeatureId": "BLACK",
+    "productFeatureTypeEnumId": "PftColor",
+    "description": "This feature is a color specification of Black color"
+  }
+]

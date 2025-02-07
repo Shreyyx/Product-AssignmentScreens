@@ -1,0 +1,51 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "assign.ProductFeatureAppl",
+    "productId": "PROD10000",
+    "productFeatureId": "128GB",
+    "fromDate": "2023-06-01",
+    "thruDate": "2024-03-06",
+    "applTypeEnumId": "PfatSelectable"
+  },
+  {
+    "_entity": "assign.ProductFeatureAppl",
+    "productId": "PROD10001",
+    "productFeatureId": "256GB",
+    "fromDate": "2023-06-01",
+    "thruDate": "2024-06-01",
+    "applTypeEnumId": "PfatSelectable"
+  },
+  {
+    "_entity": "assign.ProductFeatureAppl",
+    "productId": "PROD10002",
+    "productFeatureId": "128GB",
+    "fromDate": "2023-06-01",
+    "thruDate": "2024-06-01",
+    "applTypeEnumId": "PfatStandard"
+  },
+  {
+    "_entity": "assign.ProductFeatureAppl",
+    "productId": "PROD10005",
+    "productFeatureId": "256GB",
+    "fromDate": "2023-08-01",
+    "thruDate": "2024-08-01",
+    "applTypeEnumId": "PfatStandard"
+  },
+  {
+    "_entity": "assign.ProductFeatureAppl",
+    "productId": "PROD20002",
+    "productFeatureId": "BLACK",
+    "fromDate": "2023-09-01",
+    "thruDate": "2024-09-01",
+    "applTypeEnumId": "PfatStandard"
+  },
+  {
+    "_entity": "assign.ProductFeatureAppl",
+    "productId": "PROD20001",
+    "productFeatureId": "BLACK",
+    "fromDate": "2023-09-01",
+    "thruDate": "2024-09-01",
+    "applTypeEnumId": "PfatStandard"
+  }
+]

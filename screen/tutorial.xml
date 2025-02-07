@@ -1,0 +1,497 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd" require-authentication="anonymous-all">
+
+    <!--create Products transition-->
+    <transition name="createProduct">
+        <service-call name="create#assign.Product"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductContent">
+        <service-call name="create#assign.ProductContent"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductPrice">
+        <service-call name="create#assign.ProductPrice"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductDimension">
+        <service-call name="create#assign.ProductDimension"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductAssoc">
+        <service-call name="create#assign.ProductAssoc"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductFeature">
+        <service-call name="create#assign.ProductFeature"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductFeatureAppl">
+        <service-call name="create#assign.ProductFeatureAppl"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductCategory">
+        <service-call name="create#assign.ProductCategory"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="createProductCategoryMember">
+        <service-call name="create#assign.ProductCategoryMember"/>
+        <default-response url="."/>
+    </transition>
+
+    <!--delete products transition-->
+    <transition name="deleteProduct">
+        <service-call name="delete#assign.Product"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductContent">
+        <service-call name="delete#assign.ProductContent"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductPrice">
+        <service-call name="delete#assign.ProductPrice"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductDimension">
+        <service-call name="delete#assign.ProductDimension"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductAssoc">
+        <service-call name="delete#assign.ProductAssoc"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductFeature">
+        <service-call name="delete#assign.ProductFeature"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductFeatureAppl">
+        <service-call name="delete#assign.ProductFeatureAppl"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductCategory">
+        <service-call name="delete#assign.ProductCategory"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductCategoryMember">
+        <service-call name="delete#assign.ProductCategoryMember"/>
+        <default-response url="."/>
+    </transition>
+
+    <!--Edit Products transition-->
+    <transition name="editProduct">
+        <service-call name="update#assign.Product"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="editProductContent">
+        <service-call name="update#assign.ProductContent"/>
+        <default-response url="."/>
+    </transition>
+
+
+    <!--to find entities-->
+    <actions>
+        <entity-find entity-name="assign.Product" list="productList">
+            <search-form-inputs default-order-by="^productName"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductContent" list="contentList">
+            <search-form-inputs default-order-by="^productContentId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductPrice" list="priceList">
+            <search-form-inputs default-order-by="^productPriceId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductDimension" list="dimensionList">
+            <search-form-inputs default-order-by="^productId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductAssoc" list="associationList">
+            <search-form-inputs default-order-by="^productId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductFeature" list="featureList">
+            <search-form-inputs default-order-by="^productId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductFeatureAppl" list="featureapplList">
+            <search-form-inputs default-order-by="^productId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductCategory" list="categoryList">
+            <search-form-inputs default-order-by="^productId"/>
+        </entity-find>
+        <entity-find entity-name="assign.ProductCategoryMember" list="categoryMemberList">
+        <search-form-inputs default-order-by="^productId"/>
+    </entity-find>
+    </actions>
+
+    <!--made containers to show the required form-->
+    <widgets>
+        <label type="h1" text="Product Management Dashboard"/>
+
+        <container-box>
+            <box-header><label text="Find products" type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog1" button-text="Create Product">
+                <form-single name="CreateProduct" transition="createProduct">
+                    <auto-fields-entity entity-name="assign.Product" field-type="edit"/>
+                    <field name="submitButton">
+                        <default-field title="Create">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </container-dialog>
+            <container-dialog id="EditProductDialog1" button-text="Edit Product">
+                <form-single name="EditProduct" transition="editProduct">
+                    <auto-fields-entity entity-name="assign.Product" field-type="edit"/>
+                    <field name="submitButton">
+                        <default-field title="Save Changes">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </container-dialog>
+            </box-toolbar>
+            <box-body>
+                <form-list name="ListProducts" list="productList" skip-form="true" header-dialog="true" select-columns="true" show-csv-button="true" show-text-button="true" show-pdf-button="true">
+                    <field name="productId" print-width="10" print-width-type="characters">
+                        <header-field><text-find hide-options="true"/></header-field>
+                        <default-field><link url="editProduct" text="${productId}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="productName" print-width="40">
+                        <header-field title="Name" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProduct" text="${productName}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="productTypeEnumId" print-width="30">
+                        <header-field title="Product Type"><auto-widget-entity entity-name="assign.Product" field-type="edit"/></header-field>
+                        <default-field><display-entity entity-name="moqui.basic.Enumeration"/></default-field>
+                    </field>
+                    <field name="isVirtual" print-width="40">
+                        <header-field title="isVirtual" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProduct" text="${isVirtual}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="isVarient" print-width="40">
+                        <header-field title="isVarient" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProduct" text="${isVarient}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="fromDate" print-width="16" print-width-type="characters">
+                        <header-field title="Date" show-order-by="true"><date-period/></header-field>
+                        <default-field><display/></default-field>
+                    </field>
+                    <field name="thruDate" print-width="16" print-width-type="characters">
+                        <header-field title="Date" show-order-by="true"><date-period/></header-field>
+                        <default-field><display/></default-field>
+                    </field>
+                    <field name="findButton"><header-field title=""><submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field></field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProduct">
+                                <parameter name="productId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+                <container-box>
+                    <box-header>
+                        <form-list name="UpdateLocalizedEntityFields"
+                                   list="localizedEntityField"
+                                   transition="updateLocalizedEntityField" multi="true">
+                            <field name="productId">
+                                <header-field show-order-by="true">
+                                    <text-find hide-options="true" size="12"/>
+                                </header-field>
+                                <default-field>
+                                    <display/>
+                                </default-field>
+                            </field>
+                        </form-list>
+                    </box-header>
+                </container-box>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find product Contents " type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog2" button-text="Create Product Content">
+                <form-single name="CreateProductContent" transition="createProductContent">
+                    <auto-fields-entity entity-name="assign.ProductContent" field-type="edit"/>
+                    <field name="submitButton">
+                        <default-field title="Create">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ListProductContents" list="contentList" skip-form="true" header-dialog="true" select-columns="true" show-csv-button="true" show-text-button="true" show-pdf-button="true">
+                    <field name="productContentId" print-width="10" print-width-type="characters">
+                        <header-field><text-find hide-options="true"/></header-field>
+                        <default-field><link url="editProductContent" text="${productContentId}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="productId" print-width="40">
+                        <header-field title="Product Id" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProductContent" text="${productId}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="productContentTypeEnumId" print-width="30">
+                        <header-field title="Product Content Type"><auto-widget-entity entity-name="assign.ProductContent" field-type="edit"/></header-field>
+                        <default-field><display-entity entity-name="moqui.basic.Enumeration"/></default-field>
+                    </field>
+                    <field name="contentLocation" print-width="40">
+                        <header-field title="Content Location" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProductContent" text="${contentLocation}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="findButton"><header-field title=""><submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field></field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductContent">
+                                <parameter name="productId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Price " type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog3" button-text="Create Product Price">
+                <form-single name="CreateProductPrice" transition="createProductPrice">
+                    <auto-fields-entity entity-name="assign.ProductPrice" field-type="edit"/>
+                    <field name="submitButton">
+                        <default-field title="Create">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ListProductPrice" list="priceList" skip-form="true" header-dialog="true" select-columns="true" show-csv-button="true" show-text-button="true" show-pdf-button="true">
+                    <field name="productPriceId" print-width="10" print-width-type="characters">
+                        <header-field><text-find hide-options="true"/></header-field>
+                        <default-field><link url="editProductPrice" text="${productPriceId}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="productId" print-width="40">
+                        <header-field title="Product Id" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProductContent" text="${productId}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="priceTypeEnumId" print-width="30">
+                        <header-field title="Price Type EnumId"><auto-widget-entity entity-name="assign.ProductPrice" field-type="edit"/></header-field>
+                        <default-field><display-entity entity-name="moqui.basic.Enumeration"/></default-field>
+                    </field>
+                    <field name="price" print-width="40">
+                        <header-field title="price" show-order-by="case-insensitive"><text-find/></header-field>
+                        <default-field><link url="editProductContent" text="${price}" link-type="anchor"/></default-field>
+                    </field>
+                    <field name="fromDate" print-width="16" print-width-type="characters">
+                        <header-field title="From Date" show-order-by="true"><date-period/></header-field>
+                        <default-field><display/></default-field>
+                    </field>
+                    <field name="thruDate" print-width="16" print-width-type="characters">
+                        <header-field title="Thru Date" show-order-by="true"><date-period/></header-field>
+                        <default-field><display/></default-field>
+                    </field>
+                    <field name="findButton"><header-field title="Search"><submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field></field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductPrice">
+                                <parameter name="productPriceId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Dimension " type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog4" button-text="Create Product Dimension">
+                <form-single name="CreateProductDimension" transition="createProductDimension">
+                    <auto-fields-entity entity-name="assign.ProductDimension" field-type="edit"/>
+                    <field name="submitButton">
+                        <default-field title="Create">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                    <form-list name="ProductDimension" list="dimensionList" header-dialog="true"  >
+                        <auto-fields-entity entity-name="ProductDimension" field-type="find-display"/>
+                        <field name="findButton"><header-field >
+                            <submit text="Find"/></header-field>
+                            <default-field><ignored/></default-field>
+                        </field>
+                        <field name="delete">
+                            <header-field title="Find">
+                                <submit/>
+                            </header-field>
+                            <default-field>
+                                <link text="Delete" url="deleteProductDimension">
+                                    <parameter name="productId"/>
+                                </link>
+                            </default-field>
+                        </field>
+                    </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Association" type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog6" button-text="Create Product Assoc">
+                <form-single name="CreateProductAssoc" transition="createProductAssoc">
+                    <auto-fields-entity entity-name="assign.ProductAssoc" field-type="edit"/>
+                    <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ProductAssoc" list="associationList" header-dialog="true"  >
+                    <auto-fields-entity entity-name="ProductAssoc" field-type="find-display"/>
+                    <field name="findButton"><header-field >
+                        <submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field>
+                    </field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductAssoc">
+                                <parameter name="productId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Feature" type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog7" button-text="Create Product Feature">
+                <form-single name="CreateProductFeature" transition="createProductFeature">
+                    <auto-fields-entity entity-name="assign.ProductFeature" field-type="edit"/>
+                    <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ProductFeature" list="featureList" header-dialog="true"  >
+                    <auto-fields-entity entity-name="ProductFeature" field-type="find-display"/>
+                    <field name="findButton"><header-field >
+                        <submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field>
+                    </field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductFeature">
+                                <parameter name="productFeatureId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Feature Appl" type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog8" button-text="Create Product Feature Appl">
+                <form-single name="CreateProductFeatureAppl" transition="createProductFeatureAppl">
+                    <auto-fields-entity entity-name="assign.ProductFeatureAppl" field-type="edit"/>
+                    <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ProductFeatureAppl" list="featureapplList" header-dialog="true"  >
+                    <auto-fields-entity entity-name="ProductFeatureAppl" field-type="find-display"/>
+                    <field name="findButton"><header-field >
+                        <submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field>
+                    </field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductFeatureAppl">
+                                <parameter name="productId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Category" type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog9" button-text="Create Product Category">
+                <form-single name="CreateProductCategory" transition="createProductCategory">
+                    <auto-fields-entity entity-name="assign.ProductCategory" field-type="edit"/>
+                    <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ProductCategory" list="categoryList" header-dialog="true"  >
+                    <auto-fields-entity entity-name="ProductCategory" field-type="find-display"/>
+                    <field name="findButton"><header-field >
+                        <submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field>
+                    </field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductCategory">
+                                <parameter name="productCategoryId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+        <container-box>
+            <box-header><label text="Find Product Category Member" type="h5"/></box-header><box-toolbar>
+            <container-dialog id="CreateTutorialDialog10" button-text="Create Product Category Member">
+                <form-single name="CreateProductCategoryMember" transition="createProductCategoryMember">
+                    <auto-fields-entity entity-name="assign.ProductCategoryMember" field-type="edit"/>
+                    <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+                </form-single>
+            </container-dialog>
+        </box-toolbar>
+            <box-body>
+                <form-list name="ProductCategoryMember" list="categoryMemberList" header-dialog="true"  >
+                    <auto-fields-entity entity-name="ProductCategoryMember" field-type="find-display"/>
+                    <field name="findButton"><header-field >
+                        <submit text="Find"/></header-field>
+                        <default-field><ignored/></default-field>
+                    </field>
+                    <field name="delete">
+                        <header-field title="Find">
+                            <submit/>
+                        </header-field>
+                        <default-field>
+                            <link text="Delete" url="deleteProductCategoryMember">
+                                <parameter name="productCategoryId"/>
+                            </link>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body>
+        </container-box>
+
+    </widgets>
+</screen>

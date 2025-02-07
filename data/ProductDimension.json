@@ -1,0 +1,19 @@
+[
+  {
+    "_dataType": "demo"
+  },
+  {
+    "_entity": "assign.ProductDimension",
+    "productId": "PROD10000",
+    "dimensionTypeEnumId": "WEIGHT",
+    "dimensionValue": 6.60,
+    "valueUomId": "OUNCES"
+  },
+  {
+    "_entity": "assign.ProductDimension",
+    "productId": "PROD10001",
+    "dimensionTypeEnumId": "WEIGHT",
+    "dimensionValue": 2.5,
+    "valueUomId": "LBS"
+  }
+]

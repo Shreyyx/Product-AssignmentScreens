@@ -1,0 +1,24 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "assign.ProductCategory",
+    "productCategoryId": "PC1000",
+    "productCategoryTypeEnumId": "PctGiftCard",
+    "categoryName": "Glitter",
+    "description":"Glitter Finish Gift Card"
+  },
+  {
+    "_entity": "assign.ProductCategory",
+    "productCategoryId": "PC1001",
+    "productCategoryTypeEnumId": "PctQuickAdd",
+    "categoryName": "Flowers",
+    "description":"Red coloured Flowers"
+  },
+  {
+    "_entity": "assign.ProductCategory",
+    "productCategoryId": "PC1002",
+    "productCategoryTypeEnumId": "PctIndustry",
+    "categoryName": "Steel",
+    "description":"Steel as raw material"
+  }
+]

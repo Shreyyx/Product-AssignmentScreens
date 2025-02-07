@@ -1,0 +1,27 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "assign.ProductCategoryMember",
+    "productCategoryId": "PC1002",
+    "productId": "PROD10002",
+    "fromDate": "2024-09-12",
+    "thruDate":"2025-09-12",
+    "comments":"NA"
+  },
+  {
+    "_entity": "assign.ProductCategoryMember",
+    "productCategoryId": "PC1002",
+    "productId": "PROD10001",
+    "fromDate": "2024-09-12",
+    "thruDate":"2025-09-12",
+    "comments":"NA"
+  },
+  {
+    "_entity": "assign.ProductCategoryMember",
+    "productCategoryId": "PC1002",
+    "productId": "PROD10000",
+    "fromDate": "2023-04-05",
+    "thruDate":"2024-04-05",
+    "comments":"NA"
+  }
+]

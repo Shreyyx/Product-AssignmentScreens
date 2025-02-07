@@ -1,0 +1,40 @@
+[
+  {
+    "_dataType": "demo"
+  },
+  {
+    "_entity": "assign.ProductAssoc",
+    "productId": "PROD10000",
+    "toProductId": "PROD10001",
+    "productAssocTypeEnumId": "Marketing_Package",
+    "fromDate": "2023-01-01"
+  },
+  {
+    "_entity": "assign.ProductAssoc",
+    "productId": "PROD10000",
+    "toProductId": "PROD10002",
+    "productAssocTypeEnumId": "Product_Obsolesence",
+    "fromDate": "2023-01-01"
+  },
+  {
+    "_entity": "assign.ProductAssoc",
+    "productId": "PROD10002",
+    "toProductId": "PROD20001",
+    "productAssocTypeEnumId": "Product_Obsolesence",
+    "fromDate": "2023-09-01"
+  },
+  {
+    "_entity": "assign.ProductAssoc",
+    "productId": "PROM001",
+    "toProductId": "PROD10001",
+    "productAssocTypeEnumId": "Marketing_Package",
+    "fromDate": "2023-10-01"
+  },
+  {
+    "_entity": "assign.ProductAssoc",
+    "productId": "PROM001",
+    "toProductId": "PROD20001",
+    "productAssocTypeEnumId": "Marketing_Package",
+    "fromDate": "2023-10-01"
+  }
+]

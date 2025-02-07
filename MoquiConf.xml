@@ -4,4 +4,9 @@
     <webapp-list>
         <webapp name="webroot" require-session-token="false"> </webapp>
     </webapp-list>
+    <screen-facade>
+    <screen location="component://webroot/screen/webroot/apps.xml">
+        <subscreens-item name="tutorial" menu-title="Tutorial" menu-index="99"  location="component://productinformationmgr/screen/tutorial.xml"/>
+    </screen>
+</screen-facade>
 </moqui-conf>

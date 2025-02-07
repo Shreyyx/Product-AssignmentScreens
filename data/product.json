@@ -1,0 +1,63 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "assign.Product",
+    "productId": "PROD10000",
+    "productName": "Smartphone",
+    "productTypeEnumId": "Goods",
+    "isVirtual": "Y",
+    "isVarient": "N",
+    "fromDate": "2025-03-10",
+    "thruDate": "2025-02-11"
+  },
+  {
+    "_entity": "assign.Product",
+    "productId": "PROD10001",
+    "productName": "Smartphone-128GB",
+    "productTypeEnumId": "Goods",
+    "isVirtual": "N",
+    "isVarient": "Y",
+    "fromDate": "2025-03-10",
+    "thruDate": "2025-02-11"
+  },
+  {
+    "_entity": "assign.Product",
+    "productId": "PROD10002",
+    "productName": "Smartphone-256GB",
+    "productTypeEnumId": "Goods",
+    "isVirtual": "N",
+    "isVarient": "Y",
+    "fromDate": "2025-03-10",
+    "thruDate": "2025-02-11"
+  },
+  {
+    "_entity": "assign.Product",
+    "productId": "PROD20000",
+    "productName": "Laptop",
+    "productTypeEnumId": "Goods",
+    "isVirtual": "Y",
+    "isVarient": "N",
+    "fromDate": "2023-09-01",
+    "thruDate": "2025-02-11"
+  },
+  {
+    "_entity": "assign.Product",
+    "productId": "PROD20001",
+    "productName": "Laptop-BLACK",
+    "productTypeEnumId": "Goods",
+    "isVirtual": "N",
+    "isVarient": "Y",
+    "fromDate": "2025-03-10",
+    "thruDate": "2025-02-11"
+  },
+  {
+    "_entity": "assign.Product",
+    "productId": "PROM001",
+    "productName": "Laptop",
+    "productTypeEnumId": "Goods",
+    "isVirtual": "N",
+    "isVarient": "Y",
+    "fromDate": "2025-03-10",
+    "thruDate": "2025-02-11"
+  }
+]

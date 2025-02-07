@@ -1,0 +1,24 @@
+[
+  { "_dataType": "demo" },
+  {
+    "_entity": "assign.ProductContent",
+    "productContentId": "CON100",
+    "productId": "PROD10000",
+    "productContentTypeEnumId": "Image",
+    "contentLocation": "/images/smartphone.jpg"
+  },
+  {
+    "_entity": "assign.ProductContent",
+    "productContentId": "CON200",
+    "productId": "PROD10000",
+    "productContentTypeEnumId": "Description",
+    "contentLocation": "/descriptions/smartphone_en.txt"
+  },
+  {
+    "_entity": "assign.ProductContent",
+    "productContentId": "CON300",
+    "productId": "PROD20000",
+    "productContentTypeEnumId": "Image",
+    "contentLocation": "/images/laptop.jpg"
+  }
+]
